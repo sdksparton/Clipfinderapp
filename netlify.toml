@@ -1,6 +1,9 @@
 [build]
   publish = "."
 
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
 [[headers]]
   for = "/data/*"
   [headers.values]
