@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClipFinder | Find the moment, not the whole lecture</title>
+  <meta name="description" content="Type what you're looking for. ClipFinder jumps you to the exact moment in a lecture video, even if the professor said it differently.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2314B8A6'/%3E%3Cpath d='M12 9v14l11-7z' fill='%230b1226'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="index.html">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" fill="#0b1226"><path d="M8 5v14l11-7z"/></svg></span>
+        ClipFinder
+      </a>
+      <div style="display:flex;gap:22px;align-items:center">
+        <a class="nav-link hide-sm" href="#how">How it works</a>
+        <a class="nav-link hide-sm" href="#different">Why it's different</a>
+        <a class="btn btn-ghost" href="search.html" style="padding:9px 18px;font-size:.9rem">Open app</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Smart search for lecture videos</span>
+        <h1>Stop scrubbing through <span class="strike">3-hour</span> <span class="accent">lectures.</span></h1>
+        <p class="sub">Type what you're looking for. ClipFinder jumps you to the exact moment, even if the professor said it differently.</p>
+        <div class="hero-cta">
+          <a class="btn" href="search.html">Try a search
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+
+      <div class="demo glass" aria-hidden="true">
+        <div class="demo-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="typed" id="typed"></span>
+        </div>
+        <div class="demo-label"><span>Financial Markets · Lecture 1</span><span>1:14:00</span></div>
+        <div class="demo-track" id="demoTrack"></div>
+        <div class="demo-hit">
+          <span class="ts">32:43</span>"...I think it's evidence that something is amiss with making <mark>wealth</mark> as the objective of your life."
+        </div>
+      </div>
+    </header>
+
+    <section class="section reveal">
+      <div class="problem glass">
+        <div class="clock">0:03<small>seconds to find it</small></div>
+        <p class="problem-quote">You know the professor covered it. You just can't find where. <em>ClipFinder fixes that in seconds.</em></p>
+      </div>
+    </section>
+
+    <section class="section reveal" id="how">
+      <div class="section-head">
+        <p class="kicker">How it works</p>
+        <h2>Three steps. No rewatching.</h2>
+      </div>
+      <div class="steps">
+        <article class="step glass"><h3>Pick a lecture video.</h3><p>Choose one of your recorded lectures, or search all of them at once.</p></article>
+        <article class="step glass"><h3>Type a topic in your own words.</h3><p>No need to guess the professor's exact phrasing. Say it how you'd say it.</p></article>
+        <article class="step glass"><h3>Jump straight to the moment it's explained.</h3><p>Hit play and the video starts right where that topic comes up.</p></article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="different">
+      <div class="section-head">
+        <p class="kicker">Why it's different</p>
+        <h2>Regular transcript search only finds exact words. ClipFinder understands meaning.</h2>
+      </div>
+      <div class="diff">
+        <div class="diff-card glass">
+          <h3>Ctrl+F on a transcript</h3>
+          <div class="word-row">
+            <span class="w query">money</span>
+            <span class="w miss">budget</span>
+            <span class="w miss">cost</span>
+            <span class="w miss">pay</span>
+          </div>
+          <p>Only finds the word "money." If the professor said "budget," you get nothing.</p>
+        </div>
+        <div class="diff-card glass good">
+          <h3>ClipFinder</h3>
+          <div class="word-row">
+            <span class="w query">money</span>
+            <span class="w hit">budget</span>
+            <span class="w hit">cost</span>
+            <span class="w hit">pay</span>
+          </div>
+          <p>Word vectors (Word2Vec-style) know these words mean similar things, so "money" also finds "budget," "cost," and "pay."</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing reveal">
+      <h2>Spend your time <span class="accent">studying,</span><br>not searching.</h2>
+      <a class="btn" href="search.html">Try a search
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </section>
+
+    <footer>
+      <span>ClipFinder · built for my NLP class</span>
+      <span>Word vectors: GloVe (glove-wiki-gigaword-50) via gensim</span>
+    </footer>
+  </div>
+
+  <script>
+    // Typing demo in the hero card
+    (function () {
+      const word = "money", el = document.getElementById("typed");
+      let i = 0;
+      const t = setInterval(() => {
+        el.textContent = word.slice(0, ++i);
+        if (i >= word.length) { clearInterval(t); bars(); }
+      }, 140);
+      function bars() {
+        const track = document.getElementById("demoTrack");
+        [0.05, 0.18, 0.21, 0.44, 0.45, 0.46, 0.62, 0.81, 0.9].forEach((x, n) => {
+          const b = document.createElement("span");
+          b.className = "bar";
+          b.style.left = (x * 100) + "%";
+          b.style.height = (40 + ((n * 37) % 60)) + "%";
+          b.style.animationDelay = (n * 0.08) + "s";
+          track.appendChild(b);
+        });
+      }
+    })();
+    // Reveal sections on scroll
+    const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("on")), { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

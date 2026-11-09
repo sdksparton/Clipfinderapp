@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search lectures | ClipFinder</title>
+  <meta name="description" content="Search lecture videos by meaning and jump to the exact moment.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2314B8A6'/%3E%3Cpath d='M12 9v14l11-7z' fill='%230b1226'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="index.html">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" fill="#0b1226"><path d="M8 5v14l11-7z"/></svg></span>
+        ClipFinder
+      </a>
+      <a class="nav-link" href="#explore">Explore words</a>
+    </nav>
+
+    <div class="app-head">
+      <form class="searchbar glass" id="searchForm" role="search">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="Type a topic, like &quot;money&quot; or &quot;computer memory&quot;" aria-label="Search the lectures">
+        <button class="btn" type="submit"><span>Search</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <div class="controls">
+        <div class="select-wrap">
+          <select id="video" aria-label="Pick a lecture video">
+            <option value="all">All lectures</option>
+          </select>
+        </div>
+        <div class="chips" id="chips">
+          <button class="chip" type="button">money</button>
+          <button class="chip" type="button">computer memory</button>
+          <button class="chip" type="button">meaning of words</button>
+          <button class="chip" type="button">brain</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="app-grid">
+      <div class="player-col">
+        <div class="player glass">
+          <div class="player-frame" id="frame">
+            <div class="player-empty" id="playerEmpty">Search something, then hit "Play from here."<br>The video starts right at that moment.</div>
+          </div>
+          <div class="now"><strong id="nowTitle">No video yet</strong><span class="ts" id="nowTs"></span></div>
+        </div>
+        <div class="timeline glass">
+          <div class="timeline-head"><span>Where your topic shows up</span><span id="timelineName">Pick a lecture</span></div>
+          <div class="track" id="track" aria-label="Lecture timeline with matches"></div>
+          <div class="track-scale"><span>0:00</span><span id="trackEnd">--</span></div>
+        </div>
+      </div>
+
+      <section class="results-col" aria-live="polite">
+        <div class="results-meta" id="meta"><span class="loading"><span class="spinner"></span>Loading lectures and word vectors...</span></div>
+        <div id="results"></div>
+      </section>
+    </main>
+
+    <section class="explore glass" id="explore">
+      <div class="explore-head">
+        <div>
+          <p class="kicker">Word2Vec demo</p>
+          <h2>Explore words</h2>
+          <p>Type any word to see the 10 most similar words from the lectures, ranked by cosine similarity. These are the words a search can expand into.</p>
+        </div>
+        <form class="explore-form" id="exploreForm">
+          <input id="ew" type="text" autocomplete="off" placeholder="try: money" aria-label="Word to explore">
+          <button class="btn" type="submit">Explore</button>
+        </form>
+      </div>
+      <div class="neighbors" id="neighbors"><p class="note">Click a word card to search the lectures for it.</p></div>
+    </section>
+
+    <footer>
+      <span><a href="index.html">ClipFinder</a> · find the moment, not the whole lecture</span>
+      <span>Similar words: GloVe vectors (glove-wiki-gigaword-50) + cosine similarity</span>
+    </footer>
+  </div>
+
+  <script src="assets/nlp.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
