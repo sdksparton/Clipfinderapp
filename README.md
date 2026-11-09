@@ -47,6 +47,8 @@ Regular caption search only catches exact words. ClipFinder uses word vectors (W
 
 The generated JSON is already committed, so you only need the scripts to change the lectures.
 
+Use Python 3.11, as pinned in `.python-version` for Netlify and local development. The requirements pin gensim to a release with compatible NumPy and SciPy dependencies.
+
 ```bash
 pip install -r requirements.txt
 python scripts/get_transcripts.py   # -> data/transcripts.json (caches raw captions in data/raw/)
